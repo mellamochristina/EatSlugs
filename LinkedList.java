@@ -38,6 +38,30 @@ class LinkedList{
     }
     size++; //size increments with each addition of a piece
   }
+  
+  //method for deleting a piece in a linked list
+    public void delete(ChessPiece value){
+    if (head==null){ //if linked list is empty, it just returns
+      return;
+    }
+    Node temp = new Node(value);
+    if(head==temp){ //check if first node was the one to be deleted
+      head = head.next;
+    }
+    Node prev = head;
+    Node curr = head.next;
+    
+    while(curr!=null){ //makes sure list has more than one element
+      if(curr.getVal()==temp.getVal()){
+        prev.next = curr.next;
+      }
+      else{
+        prev = prev.next;
+        curr = curr.next;
+      }
+    }
+  }
+  
   //method to obtain size of list
   public int size(){
     return size;
