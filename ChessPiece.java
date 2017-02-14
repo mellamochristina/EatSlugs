@@ -2,24 +2,22 @@ package chessAttacks;
 import java.util.*;
 import java.io.*;
 
-enum ChessColor {
-	Black,
-	White
-};
-
 class ChessPiece {
   //need the type of piece, its column, and row
   char piece;
-  ChessColor color;
   int col;
   int row;
+  boolean color;
   
   ChessPiece (char piece, int col, int row) { //constructor for the chess piece
     this.piece = piece;
     this.col = col;
     this.row = row;
-    if (Character.isUpperCase(piece)) {
-    color = ChessColor.Black;
+    if (piece==Character.toUpperCase(piece)) {
+      this.color = true;
+    }
+    else{
+      this.color = false;
     }
   }
   
@@ -100,3 +98,21 @@ class Knight extends ChessPiece {
       return false;
   }
 }
+
+  class Pawn extends ChessPiece{
+    Pawn (char piece, int col, int row){
+      super(piece, col, row);
+    }
+    //black pawns move down and white pawns move up. can attack diag or up/down
+    boolean isAttacking (ChessPiece c){
+      if(color == true){
+        if(row-1==c.row&&col+1==c.col){
+          return true;
+        }
+        if(row-1==c.row&&col-1==c.col){
+          return true;
+        }
+      }
+      return false;
+    }
+  }
