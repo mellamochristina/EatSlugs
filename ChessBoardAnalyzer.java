@@ -98,8 +98,15 @@ class ChessBoardAnalyzer {
   }
   
   static String analyzeCheckmate() {
-	  //Return "Black/White in check" OR "Black/White checkmated" OR "All kings safe"
-	  return "Check";
+	  //Check all black pieces to make sure they are not attacking white king
+	  //Check all white pieces to make sure they are not attacking black king
+	  	//if a piece is attacking king, print "(color) in check"
+	  //Check if possible destinations for white king are also attacked by black pieces
+	  //Check if possible destinations for black king are also attacked by white pieces
+	  	//if so, print "(color) checkmated"
+	  //if both kings not under attack, print "All kings safe"
+	  //If piece at (x’, y’) is blocking and is of the opposite color, this is a check and the piece is removed from list (delete method)
+	  return "Check"; 	  //Return "Black/White in check" OR "Black/White checkmated" OR "All kings safe"
   }
   
   //ignores case to determine what type of chess piece to create 
